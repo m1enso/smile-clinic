@@ -22,43 +22,190 @@ import {
 
 function ToothIllustration() {
   return (
-    <svg viewBox="0 0 220 260" fill="none" className="w-full h-full drop-shadow-2xl">
-      <ellipse cx="110" cy="130" rx="90" ry="100" fill="url(#glowGrad)" opacity="0.25" />
-      <path
-        d="M60 60 C60 30 80 15 110 15 C140 15 160 30 160 60 L165 160 C166 185 150 210 130 215 C120 217 115 205 110 195 C105 205 100 217 90 215 C70 210 54 185 55 160 Z"
-        fill="url(#toothGrad)"
-        stroke="#00D4C8"
-        strokeWidth="2"
-      />
-      <path d="M75 55 C80 40 95 30 110 28 C125 30 140 40 145 55" stroke="white" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
-      <path d="M80 170 Q95 180 110 175 Q125 180 140 170" stroke="#00D4C8" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.7" />
-      <ellipse cx="88" cy="80" rx="10" ry="18" fill="white" opacity="0.18" transform="rotate(-15 88 80)" />
-      <circle cx="170" cy="50" r="4" fill="#00D4C8" opacity="0.8">
-        <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="185" cy="90" r="3" fill="#00D4C8" opacity="0.6">
-        <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.5s" repeatCount="indefinite" begin="0.5s" />
-      </circle>
-      <circle cx="40" cy="100" r="3" fill="#00D4C8" opacity="0.5">
-        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" begin="1s" />
-      </circle>
-      <circle cx="55" cy="45" r="2.5" fill="white" opacity="0.7">
-        <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite" begin="0.3s" />
-      </circle>
-      <ellipse cx="110" cy="130" rx="95" ry="105" stroke="#00D4C8" strokeWidth="0.8" strokeDasharray="6 8" opacity="0.3">
-        <animateTransform attributeName="transform" type="rotate" from="0 110 130" to="360 110 130" dur="20s" repeatCount="indefinite" />
-      </ellipse>
+    <svg viewBox="0 0 220 275" fill="none" className="w-full h-full drop-shadow-2xl">
       <defs>
-        <linearGradient id="toothGrad" x1="60" y1="15" x2="165" y2="220" gradientUnits="userSpaceOnUse">
+        {/* Crown gradient: bright white at top cusps, warm ivory lower */}
+        <linearGradient id="crownGrad" x1="50" y1="15" x2="170" y2="148" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="60%" stopColor="#e8f8f7" />
-          <stop offset="100%" stopColor="#b2eded" />
+          <stop offset="55%" stopColor="#edfafa" />
+          <stop offset="100%" stopColor="#c6eeec" />
         </linearGradient>
-        <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#00D4C8" />
-          <stop offset="100%" stopColor="transparent" />
+        {/* Left root gradient */}
+        <linearGradient id="rootL" x1="80" y1="140" x2="80" y2="248" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#c6eeec" />
+          <stop offset="100%" stopColor="#8dd8d5" />
+        </linearGradient>
+        {/* Right root gradient */}
+        <linearGradient id="rootR" x1="142" y1="140" x2="142" y2="248" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#c6eeec" />
+          <stop offset="100%" stopColor="#8dd8d5" />
+        </linearGradient>
+        {/* Ambient glow */}
+        <radialGradient id="glowGrad" cx="50%" cy="48%" r="50%">
+          <stop offset="0%" stopColor="#00D4C8" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#00D4C8" stopOpacity="0" />
+        </radialGradient>
+        {/* Inner crown shadow for depth */}
+        <radialGradient id="crownDepth" cx="50%" cy="70%" r="50%">
+          <stop offset="0%" stopColor="#a8e4e2" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#a8e4e2" stopOpacity="0" />
         </radialGradient>
       </defs>
+
+      {/* Ambient glow behind whole tooth */}
+      <ellipse cx="110" cy="138" rx="88" ry="100" fill="url(#glowGrad)" />
+
+      {/* ── LEFT ROOT ──────────────────────────────────────────────────── */}
+      {/* Anatomically: mesial root of a lower premolar */}
+      <path
+        d="M 72,142
+           C 65,158 60,178 57,200
+           C 54,218 57,234 67,242
+           C 74,248 84,246 88,236
+           C 92,224 90,206 90,186
+           C 90,166 96,150 106,144
+           C 96,142 84,141 72,142 Z"
+        fill="url(#rootL)"
+        stroke="#00D4C8"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+
+      {/* ── RIGHT ROOT ─────────────────────────────────────────────────── */}
+      <path
+        d="M 114,144
+           C 124,150 130,166 130,186
+           C 130,206 128,224 132,236
+           C 136,246 146,248 153,242
+           C 163,234 166,218 163,200
+           C 160,178 155,158 148,142
+           C 136,141 124,142 114,144 Z"
+        fill="url(#rootR)"
+        stroke="#00D4C8"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+
+      {/* Root canal hint – left */}
+      <path d="M 78,158 C 76,182 75,208 74,232" stroke="#00D4C8" strokeWidth="1" strokeLinecap="round" opacity="0.25" fill="none" />
+      {/* Root canal hint – right */}
+      <path d="M 142,158 C 144,182 145,208 146,232" stroke="#00D4C8" strokeWidth="1" strokeLinecap="round" opacity="0.25" fill="none" />
+
+      {/* ── CROWN ──────────────────────────────────────────────────────── */}
+      {/*
+          Bicuspid (premolar) shape:
+          - Left cusp  peak ≈ (76, 22)
+          - Valley      ≈ (110, 52)
+          - Right cusp  peak ≈ (144, 22)
+          - Crown base width: 48–172 (narrows to 68–152 at CEJ)
+      */}
+      <path
+        d="M 50,112
+           C 47,80 50,48 60,30
+           C 66,20 74,13 82,20
+           C 87,25 90,36 93,44
+           C 98,54 105,58 110,58
+           C 115,58 122,54 127,44
+           C 130,36 133,25 138,20
+           C 146,13 154,20 160,30
+           C 170,48 173,80 170,112
+           C 168,128 160,140 148,143
+           C 136,145 122,146 110,146
+           C 98,146 84,145 72,143
+           C 60,140 52,128 50,112 Z"
+        fill="url(#crownGrad)"
+        stroke="#00D4C8"
+        strokeWidth="2.2"
+        strokeLinejoin="round"
+      />
+
+      {/* Crown depth shading at base */}
+      <path
+        d="M 50,112 C 52,128 60,140 72,143 C 84,145 98,146 110,146 C 122,146 136,145 148,143 C 160,140 168,128 170,112 C 165,122 155,132 142,136 C 130,139 118,140 110,140 C 102,140 90,139 78,136 C 65,132 55,122 50,112 Z"
+        fill="url(#crownDepth)"
+      />
+
+      {/* ── CROWN SURFACE DETAILS ──────────────────────────────────────── */}
+
+      {/* Central fissure groove (between the two cusps) */}
+      <path
+        d="M 92,46 C 96,56 102,66 106,74 C 108,78 110,80 110,80 C 110,80 112,78 114,74 C 118,66 124,56 128,46"
+        stroke="#00D4C8"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        opacity="0.45"
+        fill="none"
+      />
+
+      {/* Transverse ridge across crown */}
+      <path
+        d="M 68,95 C 82,88 96,86 110,86 C 124,86 138,88 152,95"
+        stroke="#00D4C8"
+        strokeWidth="0.9"
+        strokeLinecap="round"
+        opacity="0.2"
+        fill="none"
+      />
+
+      {/* Left cusp main shine */}
+      <ellipse cx="76" cy="36" rx="9" ry="16" fill="white" opacity="0.28" transform="rotate(-12 76 36)" />
+      {/* Left cusp secondary glint */}
+      <ellipse cx="70" cy="26" rx="4" ry="7" fill="white" opacity="0.45" transform="rotate(-8 70 26)" />
+
+      {/* Right cusp main shine */}
+      <ellipse cx="144" cy="36" rx="9" ry="16" fill="white" opacity="0.22" transform="rotate(12 144 36)" />
+      {/* Right cusp secondary glint */}
+      <ellipse cx="150" cy="26" rx="4" ry="7" fill="white" opacity="0.38" transform="rotate(8 150 26)" />
+
+      {/* Crown body broad highlight (left buccal face) */}
+      <path
+        d="M 56,105 C 55,85 58,60 64,42"
+        stroke="white"
+        strokeWidth="5"
+        strokeLinecap="round"
+        opacity="0.22"
+        fill="none"
+      />
+
+      {/* ── CEJ – cementoenamel junction (crown / root boundary) ───────── */}
+      <path
+        d="M 72,143 C 86,147 98,148 110,148 C 122,148 134,147 148,143"
+        stroke="#00D4C8"
+        strokeWidth="1.6"
+        strokeDasharray="5 3.5"
+        strokeLinecap="round"
+        opacity="0.65"
+        fill="none"
+      />
+
+      {/* ── SPARKLES ───────────────────────────────────────────────────── */}
+      <circle cx="182" cy="38" r="4.5" fill="#00D4C8" opacity="0.85">
+        <animate attributeName="opacity" values="0.85;0.2;0.85" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="r" values="4.5;3;4.5" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="198" cy="100" r="3" fill="#00D4C8" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.6s" repeatCount="indefinite" begin="0.4s" />
+      </circle>
+      <circle cx="28" cy="72" r="3.5" fill="#00D4C8" opacity="0.55">
+        <animate attributeName="opacity" values="0.55;0.1;0.55" dur="3.1s" repeatCount="indefinite" begin="1s" />
+      </circle>
+      <circle cx="22" cy="140" r="2.5" fill="white" opacity="0.7">
+        <animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.9s" repeatCount="indefinite" begin="0.2s" />
+      </circle>
+      <circle cx="188" cy="185" r="2" fill="#00D4C8" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.4s" repeatCount="indefinite" begin="0.7s" />
+      </circle>
+      {/* Small star cross */}
+      <g opacity="0.7">
+        <animate attributeName="opacity" values="0.7;0.1;0.7" dur="3s" repeatCount="indefinite" begin="1.5s" />
+        <line x1="168" y1="22" x2="168" y2="30" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="164" y1="26" x2="172" y2="26" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round" />
+      </g>
+
+      {/* ── ORBITING RING ──────────────────────────────────────────────── */}
+      <ellipse cx="110" cy="138" rx="98" ry="112" stroke="#00D4C8" strokeWidth="0.8" strokeDasharray="7 9" opacity="0.28">
+        <animateTransform attributeName="transform" type="rotate" from="0 110 138" to="360 110 138" dur="22s" repeatCount="indefinite" />
+      </ellipse>
     </svg>
   );
 }
