@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import toothImg from "../public/tooth.webp";
 import {
   Menu,
   X,
@@ -21,6 +22,53 @@ import {
 } from "lucide-react";
 
 function ToothIllustration() {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Orbiting ring */}
+      <svg viewBox="0 0 240 290" fill="none" className="absolute inset-0 w-full h-full pointer-events-none">
+        <defs>
+          <radialGradient id="glowGrad" cx="50%" cy="46%" r="50%">
+            <stop offset="0%"   stopColor="#00D4C8" stopOpacity="0.22"/>
+            <stop offset="100%" stopColor="#00D4C8" stopOpacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="120" cy="150" rx="105" ry="118" fill="url(#glowGrad)"/>
+        <ellipse cx="120" cy="150" rx="110" ry="126" stroke="#00D4C8"
+          strokeWidth="0.8" strokeDasharray="7 10" opacity="0.22">
+          <animateTransform attributeName="transform" type="rotate"
+            from="0 120 150" to="360 120 150" dur="22s" repeatCount="indefinite"/>
+        </ellipse>
+        <circle cx="222" cy="42" r="4.5" fill="#00D4C8" opacity="0.85">
+          <animate attributeName="opacity" values="0.85;0.2;0.85" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="r" values="4.5;2.8;4.5" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="14" cy="80" r="3.5" fill="#00D4C8" opacity="0.55">
+          <animate attributeName="opacity" values="0.55;0.1;0.55" dur="3.1s" repeatCount="indefinite" begin="1s"/>
+        </circle>
+        <circle cx="8" cy="158" r="2.5" fill="white" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.9s" repeatCount="indefinite" begin="0.2s"/>
+        </circle>
+        <circle cx="232" cy="118" r="3" fill="#00D4C8" opacity="0.6">
+          <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.6s" repeatCount="indefinite" begin="0.4s"/>
+        </circle>
+        <g>
+          <animate attributeName="opacity" values="0.75;0.1;0.75" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+          <line x1="204" y1="14" x2="204" y2="22" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round"/>
+          <line x1="200" y1="18" x2="208" y2="18" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round"/>
+        </g>
+      </svg>
+      {/* Actual tooth photo */}
+      <img
+        src={toothImg}
+        alt="Tooth model"
+        className="relative z-10 w-4/5 h-4/5 object-contain drop-shadow-2xl"
+        style={{ filter: "drop-shadow(0 0 32px rgba(0,212,200,0.35))" }}
+      />
+    </div>
+  );
+}
+
+function _OldToothSVGUnused() {
   return (
     <svg viewBox="0 0 240 290" fill="none" className="w-full h-full drop-shadow-2xl">
       <defs>
