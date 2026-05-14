@@ -72,56 +72,50 @@ function ToothIllustration() {
       <ellipse cx="105" cy="150" rx="88" ry="100" fill="url(#glow)"/>
 
       {/* ── LEFT ROOT ──
-          Outer left edge x≈16 at widest, tip at ≈(56,276)
-          Shares top-left point (26,148) with crown
+          Outer edge curves outward then tapers to rounded tip.
+          Inner edge curves back up to form the W-notch.
       */}
       <path
         d="M 26,148
-           C 14,164 8,188 10,214
-           C 12,238 24,260 42,272
-           C 50,278 62,282 74,276
-           C 86,270 92,254 92,232
-           C 92,208 86,182 78,164
-           C 72,150 58,146 44,146
-           C 36,146 30,146 26,148 Z"
-        fill="url(#rootG)"
-      />
-
-      {/* ── MIDDLE ROOT ──
-          Narrower, hangs between L and R, tip at ≈(114,282)
-      */}
-      <path
-        d="M 94,152
-           C 92,168 92,190 94,212
-           C 96,234 102,256 110,268
-           C 114,276 120,280 126,276
-           C 132,272 134,258 132,236
-           C 130,212 128,188 128,166
-           C 128,154 124,150 118,150
-           C 110,150 96,150 94,152 Z"
+           C 12,166 6,194 8,222
+           C 10,248 24,268 46,278
+           C 56,284 70,286 82,278
+           C 94,270 98,252 96,228
+           C 94,202 90,174 90,158
+           C 88,150 80,148 66,148
+           C 50,148 36,148 26,148 Z"
         fill="url(#rootG)"
       />
 
       {/* ── RIGHT ROOT ──
-          Mirror of left, tip at ≈(154,276)
+          Mirror: outer edge outward, inner back up for W-notch.
       */}
       <path
         d="M 184,148
-           C 196,164 202,188 200,214
-           C 198,238 186,260 168,272
-           C 160,278 148,282 136,276
-           C 124,270 118,254 118,232
-           C 118,208 124,182 132,164
-           C 138,150 152,146 166,146
-           C 174,146 180,146 184,148 Z"
+           C 198,166 204,194 202,222
+           C 200,248 186,268 164,278
+           C 154,284 140,286 128,278
+           C 116,270 112,252 114,228
+           C 116,202 120,174 120,158
+           C 122,150 130,148 144,148
+           C 160,148 174,148 184,148 Z"
         fill="url(#rootG)"
       />
 
-      {/* Root valley shadows — dark grooves at furcation */}
-      <path d="M 94,150 C 93,162 92,178 93,195"
-        stroke="#686868" strokeWidth="10" strokeLinecap="round" opacity="0.4" fill="none"/>
-      <path d="M 128,150 C 129,162 130,178 129,195"
-        stroke="#686868" strokeWidth="10" strokeLinecap="round" opacity="0.4" fill="none"/>
+      {/* Furcation notch fill — dark shadow visible in the gap between roots */}
+      <path
+        d="M 90,158
+           C 90,172 94,192 100,210
+           C 104,224 108,238 110,254
+           C 111,262 112,268 112,272
+           C 112,272 112,272 112,272
+           C 112,268 112,262 113,254
+           C 115,238 118,224 122,210
+           C 128,192 130,172 120,158
+           C 116,152 100,152 90,158 Z"
+        fill="url(#valleyG)"
+        opacity="0.55"
+      />
 
       {/* ── CROWN ──
           2 cusps: L peak (78,16), valley (110,42), R peak (138,12)
