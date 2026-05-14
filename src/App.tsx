@@ -22,178 +22,120 @@ import {
 
 function ToothIllustration() {
   return (
-    <svg viewBox="0 0 240 285" fill="none" className="w-full h-full drop-shadow-2xl">
+    <svg viewBox="0 0 200 260" fill="none" className="w-full h-full drop-shadow-2xl">
       <defs>
-        {/* Natural ivory enamel */}
-        <linearGradient id="crownG" x1="50" y1="10" x2="200" y2="162" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#FFFEF8"/>
-          <stop offset="35%"  stopColor="#F8F3EA"/>
-          <stop offset="75%"  stopColor="#EDE4D2"/>
-          <stop offset="100%" stopColor="#E0D5BF"/>
+        <linearGradient id="crownFill" x1="14" y1="2" x2="186" y2="130" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#FFFFFF"/>
+          <stop offset="55%"  stopColor="#ECFAF9"/>
+          <stop offset="100%" stopColor="#C4EDEC"/>
         </linearGradient>
-        {/* Left-side soft light */}
-        <linearGradient id="leftLight" x1="38" y1="18" x2="105" y2="155" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="white" stopOpacity="0.38"/>
-          <stop offset="100%" stopColor="white" stopOpacity="0"/>
+        <linearGradient id="rootFill" x1="50" y1="122" x2="150" y2="250" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#C4EDEC"/>
+          <stop offset="100%" stopColor="#7ECFCD"/>
         </linearGradient>
-        {/* Right-side shadow */}
-        <linearGradient id="rightShad" x1="152" y1="18" x2="216" y2="155" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#C4AA84" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#C4AA84" stopOpacity="0.52"/>
-        </linearGradient>
-        {/* Root: warm tan */}
-        <linearGradient id="rootG" x1="50" y1="152" x2="200" y2="275" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#DDD0B6"/>
-          <stop offset="100%" stopColor="#C0A880"/>
-        </linearGradient>
-        {/* Teal ambient glow */}
-        <radialGradient id="glowGrad" cx="50%" cy="44%" r="50%">
+        <radialGradient id="glow" cx="50%" cy="44%" r="50%">
           <stop offset="0%"   stopColor="#00D4C8" stopOpacity="0.2"/>
           <stop offset="100%" stopColor="#00D4C8" stopOpacity="0"/>
         </radialGradient>
-        {/* Subtle mid-crown sheen */}
-        <linearGradient id="sheen" x1="64" y1="65" x2="176" y2="65" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="white" stopOpacity="0"/>
-          <stop offset="40%"  stopColor="white" stopOpacity="0.4"/>
-          <stop offset="60%"  stopColor="white" stopOpacity="0.4"/>
+        <radialGradient id="hleft" cx="34%" cy="22%" r="26%">
+          <stop offset="0%"   stopColor="white" stopOpacity="0.75"/>
           <stop offset="100%" stopColor="white" stopOpacity="0"/>
-        </linearGradient>
+        </radialGradient>
       </defs>
 
-      {/* Ambient teal glow */}
-      <ellipse cx="120" cy="146" rx="100" ry="110" fill="url(#glowGrad)"/>
+      {/* Ambient glow */}
+      <ellipse cx="100" cy="140" rx="88" ry="102" fill="url(#glow)"/>
 
-      {/* ── ROOTS ── */}
+      {/* Crown — 2 rounded cusps, clean icon shape */}
       <path
-        d="M 44,152
-           C 34,166 28,190 30,212
-           C 32,232 42,252 56,264
-           C 64,272 74,276 84,272
-           C 94,268 100,258 102,246
-           C 104,234 104,218 106,210
-           C 108,204 114,201 120,201
-           C 126,201 132,204 134,210
-           C 136,218 136,234 138,246
-           C 140,258 146,268 156,272
-           C 166,276 176,272 184,264
-           C 198,252 208,232 210,212
-           C 212,190 206,166 196,152
-           C 170,158 148,160 120,160
-           C 92,158 70,156 44,152 Z"
-        fill="url(#rootG)"
-        stroke="#B0966E"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      {/* Root groove lines */}
-      <path d="M 106,156 C 107,174 108,194 106,210"
-        stroke="#A08860" strokeWidth="2.5" strokeLinecap="round" opacity="0.48" fill="none"/>
-      <path d="M 134,156 C 133,174 132,194 134,210"
-        stroke="#A08860" strokeWidth="2.5" strokeLinecap="round" opacity="0.48" fill="none"/>
-      {/* Root-tip shadows */}
-      <ellipse cx="66"  cy="269" rx="18" ry="4"   fill="#A08860" opacity="0.18"/>
-      <ellipse cx="120" cy="273" rx="13" ry="3.5" fill="#A08860" opacity="0.15"/>
-      <ellipse cx="174" cy="269" rx="18" ry="4"   fill="#A08860" opacity="0.18"/>
-
-      {/* ── CROWN ──
-          4 cusps (buccal view):
-            L-buccal  ≈ (70,18)  tallest
-            L-lingual ≈ (108,30) slightly shorter
-            R-lingual ≈ (132,30)
-            R-buccal  ≈ (170,18) tallest
-          Valleys: L (90,50)  central (120,56)  R (150,50)
-          Widest y≈90: x 30–210   CEJ y≈152: x 44–196
-      ── */}
-      <path
-        d="M 44,152
-           C 30,126 26,90 30,62
-           C 32,44 40,26 52,17
-           C 60,10 70,7 78,10
-           C 87,14 92,27 94,42
-           C 95,48 95,52 96,52
-           C 98,52 102,42 107,30
-           C 112,18 118,13 124,14
-           C 130,13 136,18 141,30
-           C 146,42 150,52 152,52
-           C 153,52 153,48 154,42
-           C 156,27 161,14 170,10
-           C 178,7 188,10 196,19
-           C 208,31 214,54 216,78
-           C 218,102 214,130 208,146
-           C 204,152 198,153 196,152
-           C 170,158 148,160 120,160
-           C 92,158 70,156 44,152 Z"
-        fill="url(#crownG)"
-        stroke="#C0B09A"
-        strokeWidth="1.5"
+        d="M 34,122
+           C 16,96 12,56 18,30
+           C 22,8 38,2 58,2
+           C 70,2 80,12 86,30
+           C 90,42 91,52 92,54
+           C 94,56 96,54 98,50
+           C 102,38 110,18 120,8
+           C 128,2 140,2 152,6
+           C 166,12 178,28 180,52
+           C 184,78 178,106 160,122
+           C 140,126 122,128 100,128
+           C 78,128 56,126 34,122 Z"
+        fill="url(#crownFill)"
+        stroke="#00D4C8"
+        strokeWidth="3"
         strokeLinejoin="round"
       />
 
-      {/* Left-side light shading */}
+      {/* Left root */}
       <path
-        d="M 44,152 C 30,126 26,90 30,62 C 32,44 40,26 52,17
-           C 60,10 70,7 78,10 C 87,14 92,27 94,42
-           C 95,48 95,52 96,52
-           C 90,60 82,74 74,92 C 62,114 52,138 46,150 Z"
-        fill="url(#leftLight)"
+        d="M 34,122
+           C 24,132 16,152 14,174
+           C 12,198 18,222 30,234
+           C 38,244 52,248 64,242
+           C 76,236 80,218 78,198
+           C 76,176 66,152 54,134
+           C 46,126 40,122 34,122 Z"
+        fill="url(#rootFill)"
+        stroke="#00D4C8"
+        strokeWidth="3"
+        strokeLinejoin="round"
       />
 
-      {/* Right-side shadow */}
+      {/* Right root */}
       <path
-        d="M 154,42 C 156,27 161,14 170,10 C 178,7 188,10 196,19
-           C 208,31 214,54 216,78 C 218,102 214,130 208,146
-           C 204,152 198,153 196,152 C 186,155 176,158 166,159
-           C 172,150 178,138 180,122 C 182,104 180,82 176,62
-           C 172,44 164,28 156,18 Z"
-        fill="url(#rightShad)"
+        d="M 160,122
+           C 170,130 178,150 180,172
+           C 182,196 176,220 164,232
+           C 156,242 142,246 130,242
+           C 118,236 114,218 116,198
+           C 118,176 128,152 140,134
+           C 150,126 156,122 160,122 Z"
+        fill="url(#rootFill)"
+        stroke="#00D4C8"
+        strokeWidth="3"
+        strokeLinejoin="round"
       />
 
-      {/* Mid-crown horizontal sheen */}
-      <ellipse cx="120" cy="70" rx="50" ry="18" fill="url(#sheen)" opacity="0.55"/>
+      {/* Root separator groove */}
+      <path d="M 100,128 C 100,148 100,165 100,176"
+        stroke="#00D4C8" strokeWidth="2" strokeLinecap="round" opacity="0.38" fill="none"/>
 
-      {/* Crown groove lines */}
-      <path d="M 96,52 C 104,58 112,61 120,61 C 128,61 136,58 144,52"
-        stroke="#C0B09A" strokeWidth="2" strokeLinecap="round" opacity="0.6" fill="none"/>
-      <path d="M 120,61 C 120,90 119,118 118,142"
-        stroke="#C0B09A" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" fill="none"/>
-      <path d="M 96,52 C 92,68 90,88 91,108"
-        stroke="#C0B09A" strokeWidth="1.3" strokeLinecap="round" opacity="0.28" fill="none"/>
-      <path d="M 144,52 C 148,68 150,88 149,108"
-        stroke="#C0B09A" strokeWidth="1.3" strokeLinecap="round" opacity="0.28" fill="none"/>
+      {/* Soft highlight on crown */}
+      <ellipse cx="74" cy="42" rx="26" ry="36"
+        fill="url(#hleft)" transform="rotate(-10 74 42)"/>
 
-      {/* CEJ dashed line */}
-      <path d="M 58,155 C 84,158 102,160 120,160 C 138,160 156,158 182,155"
-        stroke="#B0966E" strokeWidth="1.5" strokeDasharray="5 3.5"
-        strokeLinecap="round" opacity="0.55" fill="none"/>
+      {/* Cusp valley groove */}
+      <path d="M 94,54 C 96,78 96,102 95,120"
+        stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round" opacity="0.2" fill="none"/>
 
-      {/* ── SPARKLES ── */}
-      <circle cx="222" cy="42" r="4.5" fill="#00D4C8" opacity="0.85">
+      {/* SPARKLES */}
+      <circle cx="184" cy="34" r="4.5" fill="#00D4C8" opacity="0.85">
         <animate attributeName="opacity" values="0.85;0.2;0.85" dur="2s" repeatCount="indefinite"/>
         <animate attributeName="r" values="4.5;2.8;4.5" dur="2s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="232" cy="118" r="3" fill="#00D4C8" opacity="0.6">
+      <circle cx="192" cy="108" r="3" fill="#00D4C8" opacity="0.6">
         <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.6s" repeatCount="indefinite" begin="0.4s"/>
       </circle>
-      <circle cx="14" cy="80" r="3.5" fill="#00D4C8" opacity="0.55">
+      <circle cx="10" cy="66" r="3.5" fill="#00D4C8" opacity="0.55">
         <animate attributeName="opacity" values="0.55;0.1;0.55" dur="3.1s" repeatCount="indefinite" begin="1s"/>
       </circle>
-      <circle cx="8" cy="158" r="2.5" fill="white" opacity="0.7">
+      <circle cx="6" cy="148" r="2.5" fill="white" opacity="0.7">
         <animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.9s" repeatCount="indefinite" begin="0.2s"/>
       </circle>
-      <circle cx="224" cy="210" r="2" fill="#00D4C8" opacity="0.5">
+      <circle cx="188" cy="190" r="2" fill="#00D4C8" opacity="0.5">
         <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.4s" repeatCount="indefinite" begin="0.7s"/>
       </circle>
       <g>
         <animate attributeName="opacity" values="0.75;0.1;0.75" dur="3s" repeatCount="indefinite" begin="1.5s"/>
-        <line x1="204" y1="14" x2="204" y2="22" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round"/>
-        <line x1="200" y1="18" x2="208" y2="18" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round"/>
+        <line x1="166" y1="6"  x2="166" y2="14" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round"/>
+        <line x1="162" y1="10" x2="170" y2="10" stroke="#00D4C8" strokeWidth="1.5" strokeLinecap="round"/>
       </g>
 
-      {/* ── ORBITING RING ── */}
-      <ellipse cx="120" cy="146" rx="110" ry="124" stroke="#00D4C8"
+      {/* Orbiting ring */}
+      <ellipse cx="100" cy="138" rx="92" ry="106" stroke="#00D4C8"
         strokeWidth="0.8" strokeDasharray="7 10" opacity="0.22">
         <animateTransform attributeName="transform" type="rotate"
-          from="0 120 146" to="360 120 146" dur="22s" repeatCount="indefinite"/>
+          from="0 100 138" to="360 100 138" dur="22s" repeatCount="indefinite"/>
       </ellipse>
     </svg>
   );
