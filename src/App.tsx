@@ -71,50 +71,37 @@ function ToothIllustration() {
       {/* Ambient teal glow */}
       <ellipse cx="105" cy="150" rx="88" ry="100" fill="url(#glow)"/>
 
-      {/* ── LEFT ROOT ──
-          Outer edge curves outward then tapers to rounded tip.
-          Inner edge curves back up to form the W-notch.
+      {/* ── ROOT BLOCK — single W-shape with two tips + center notch ──
+          Left tip  ≈ (58, 283)   notch bottom ≈ (105, 222)   Right tip ≈ (152, 283)
       */}
       <path
         d="M 26,148
-           C 12,166 6,194 8,222
-           C 10,248 24,268 46,278
-           C 56,284 70,286 82,278
-           C 94,270 98,252 96,228
-           C 94,202 90,174 90,158
-           C 88,150 80,148 66,148
-           C 50,148 36,148 26,148 Z"
+           C 10,166 4,196 6,224
+           C 8,250 20,272 42,282
+           C 52,287 66,288 78,280
+           C 90,272 96,254 100,234
+           C 102,226 104,222 105,220
+           C 106,222 108,226 110,234
+           C 114,254 120,272 132,280
+           C 144,288 158,287 168,282
+           C 190,272 202,250 204,224
+           C 206,196 200,166 184,148
+           C 164,152 140,154 120,154
+           C 100,154 78,152 58,150
+           C 44,149 34,148 26,148 Z"
         fill="url(#rootG)"
       />
 
-      {/* ── RIGHT ROOT ──
-          Mirror: outer edge outward, inner back up for W-notch.
-      */}
+      {/* Center notch shadow — dark groove between the two root tips */}
       <path
-        d="M 184,148
-           C 198,166 204,194 202,222
-           C 200,248 186,268 164,278
-           C 154,284 140,286 128,278
-           C 116,270 112,252 114,228
-           C 116,202 120,174 120,158
-           C 122,150 130,148 144,148
-           C 160,148 174,148 184,148 Z"
-        fill="url(#rootG)"
-      />
-
-      {/* Furcation notch fill — dark shadow visible in the gap between roots */}
-      <path
-        d="M 90,158
-           C 90,172 94,192 100,210
-           C 104,224 108,238 110,254
-           C 111,262 112,268 112,272
-           C 112,272 112,272 112,272
-           C 112,268 112,262 113,254
-           C 115,238 118,224 122,210
-           C 128,192 130,172 120,158
-           C 116,152 100,152 90,158 Z"
+        d="M 96,156
+           C 94,170 96,192 100,214
+           C 102,226 104,232 105,234
+           C 106,232 108,226 110,214
+           C 114,192 116,170 114,156
+           C 110,152 100,152 96,156 Z"
         fill="url(#valleyG)"
-        opacity="0.55"
+        opacity="0.6"
       />
 
       {/* ── CROWN ──
