@@ -72,70 +72,59 @@ function ToothIllustration() {
       {/* Ambient teal glow */}
       <ellipse cx="105" cy="150" rx="88" ry="100" fill="url(#glow)"/>
 
-      {/* ── ENTIRE TOOTH — single unified path, crown + roots, NO seam ──
-          Starting at left CEJ junction point, going UP through crown,
-          across top cusps, down right side, then DOWN into right root,
-          around right tip, UP into notch, DOWN into left root,
-          around left tip, and back UP to start.
+      {/* ── ENTIRE TOOTH — single unified path with continuous side edges.
+          Side curves flow smoothly from cusps through CEJ down to root tips
+          with no visible kink at the crown-root junction.
       */}
       <path
-        d="M 26,148
-           C 12,120 8,80 14,50
-           C 18,26 34,10 56,8
-           C 68,6 80,12 86,28
-           C 90,40 92,52 95,56
-           C 98,60 104,58 108,50
-           C 114,36 126,18 142,12
-           C 156,6 170,12 178,28
-           C 186,44 190,68 190,94
-           C 190,118 184,138 178,150
-           C 180,176 178,206 172,234
-           C 168,256 158,274 148,282
-           C 140,288 130,288 124,282
-           C 118,276 114,260 112,242
-           C 110,230 108,220 106,214
-           C 105,212 105,212 105,212
-           C 105,212 105,212 104,214
-           C 102,220 100,230 98,242
-           C 96,260 92,276 86,282
-           C 80,288 70,288 62,282
-           C 52,274 42,256 38,234
-           C 32,206 30,176 32,150
-           C 26,148 26,148 26,148 Z"
+        d="M 22,80
+           C 26,46 42,12 60,8
+           C 74,4 84,12 90,28
+           C 94,42 96,52 100,56
+           C 104,60 110,58 114,50
+           C 120,36 130,16 146,10
+           C 164,6 180,18 188,46
+           C 196,78 196,116 184,148
+           C 180,180 174,214 162,242
+           C 152,262 140,276 128,280
+           C 118,284 110,280 106,272
+           C 102,262 102,244 104,224
+           C 105,214 105,210 105,208
+           C 105,210 105,214 106,224
+           C 108,244 108,262 104,272
+           C 100,280 92,284 82,280
+           C 70,276 58,262 48,242
+           C 36,214 30,180 26,148
+           C 18,116 18,80 22,80 Z"
         fill="url(#enamel)"
         strokeLinejoin="round"
       />
 
       {/* Left-edge shadow */}
       <path
-        d="M 26,148 C 12,120 8,80 14,50 C 18,26 34,10 56,8
-           C 62,8 66,10 70,14
-           C 56,28 44,52 38,80 C 32,106 30,132 32,150
-           C 30,180 34,210 42,238
-           C 50,260 58,272 64,278
-           C 60,272 52,256 48,234
-           C 42,206 40,180 42,154
-           C 40,150 36,148 26,148 Z"
+        d="M 22,80 C 26,46 42,12 60,8
+           C 64,8 68,10 72,14
+           C 58,28 46,50 38,82 C 30,116 28,150 32,180
+           C 36,210 46,242 60,272
+           C 54,266 46,250 40,232
+           C 32,200 28,166 26,148
+           C 18,116 18,80 22,80 Z"
         fill="url(#shadowL)"
-        opacity="0.85"
+        opacity="0.8"
       />
 
-      {/* Right-edge roundness shadow — extends from crown through right root */}
+      {/* Right-edge roundness shadow — single continuous edge */}
       <path
-        d="M 142,12 C 158,8 172,14 180,30
-           C 188,46 190,70 190,94 C 190,118 184,138 178,150
-           C 180,180 178,210 172,234
-           C 168,256 158,274 148,282
-           C 144,284 142,282 142,280
-           C 154,272 164,254 168,232
-           C 174,204 172,178 168,154
-           C 170,150 174,150 178,150
-           C 178,150 178,150 178,150
-           C 184,140 190,118 190,94
-           C 190,70 188,46 180,30
-           C 172,14 158,8 142,12 Z"
+        d="M 146,10 C 164,6 180,18 188,46
+           C 196,78 196,116 184,148
+           C 180,180 174,214 162,242
+           C 154,256 144,270 132,278
+           C 138,272 146,260 154,242
+           C 168,212 176,178 178,148
+           C 184,116 184,80 178,52
+           C 172,28 160,14 146,10 Z"
         fill="url(#shadowR)"
-        opacity="0.85"
+        opacity="0.8"
       />
 
       {/* Deep V notch shadow between root tips */}
