@@ -24,13 +24,14 @@ function ToothIllustration() {
   return (
     <svg viewBox="0 0 210 295" fill="none" className="w-full h-full drop-shadow-2xl">
       <defs>
-        {/* Base ceramic white, slightly warm */}
-        <linearGradient id="enamel" x1="18" y1="10" x2="192" y2="155" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#F2F2F2"/>
-          <stop offset="50%"  stopColor="#E4E4E4"/>
-          <stop offset="100%" stopColor="#C8C8C8"/>
+        {/* Unified ceramic white tooth gradient — top bright, bottom slightly grey */}
+        <linearGradient id="enamel" x1="18" y1="10" x2="192" y2="290" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor="#F4F4F4"/>
+          <stop offset="40%"  stopColor="#E8E8E8"/>
+          <stop offset="75%"  stopColor="#D0D0D0"/>
+          <stop offset="100%" stopColor="#B0B0B0"/>
         </linearGradient>
-        {/* Root: slightly darker grey-white */}
+        {/* Alias for compatibility (kept for old root reference) */}
         <linearGradient id="rootG" x1="18" y1="148" x2="192" y2="288" gradientUnits="userSpaceOnUse">
           <stop offset="0%"   stopColor="#D8D8D8"/>
           <stop offset="100%" stopColor="#B4B4B4"/>
@@ -71,73 +72,11 @@ function ToothIllustration() {
       {/* Ambient teal glow */}
       <ellipse cx="105" cy="150" rx="88" ry="100" fill="url(#glow)"/>
 
-      {/* ── ROOT BLOCK — TWO tapered roots like crown cusps (mirrored) ──
-          Mirror of crown: wide at CEJ, tapers to 2 separate rounded tips.
-          Left tip ≈ (66, 286)   Notch bottom ≈ (105, 200)   Right tip ≈ (144, 286)
-      */}
-      <path
-        d="M 30,148
-           C 16,170 8,206 12,236
-           C 18,262 36,280 58,286
-           C 70,290 80,288 86,280
-           C 92,272 95,256 96,236
-           C 96,224 99,212 102,204
-           C 103,202 104,200 105,200
-           C 106,200 107,202 108,204
-           C 111,212 114,224 114,236
-           C 115,256 118,272 124,280
-           C 130,288 140,290 152,286
-           C 174,280 192,262 198,236
-           C 202,206 194,170 180,148
-           C 162,152 140,154 120,154
-           C 100,154 80,152 60,150
-           C 46,149 36,148 30,148 Z"
-        fill="url(#rootG)"
-      />
-
-      {/* Right-side shadow on roots for 3D roundness */}
-      <path
-        d="M 180,148
-           C 194,170 202,206 198,236
-           C 192,262 174,280 152,286
-           C 146,288 142,286 140,282
-           C 152,274 162,256 168,232
-           C 174,206 172,180 168,162
-           C 164,154 170,150 180,148 Z"
-        fill="url(#shadowR)"
-        opacity="0.5"
-      />
-
-      {/* Light highlight on left-front of left root */}
-      <path
-        d="M 30,148
-           C 16,170 8,206 12,236
-           C 18,256 30,272 48,282
-           C 50,278 50,272 48,260
-           C 40,234 36,202 36,176
-           C 38,160 40,152 50,150
-           C 40,148 32,148 30,148 Z"
-        fill="url(#shadowL)"
-        opacity="0.45"
-      />
-
-      {/* Deep V notch shadow between tips */}
-      <path
-        d="M 96,210
-           C 100,222 103,232 105,234
-           C 107,232 110,222 114,210
-           C 115,206 115,200 113,198
-           C 110,206 108,214 105,220
-           C 102,214 100,206 97,198
-           C 95,200 95,206 96,210 Z"
-        fill="url(#valleyG)"
-        opacity="0.7"
-      />
-
-      {/* ── CROWN ──
-          2 cusps: L peak (78,16), valley (110,42), R peak (138,12)
-          Widest at y≈80: x 16–194
-          CEJ at y≈148: x 26–184
+      {/* ── ENTIRE TOOTH — single unified path, crown + roots, NO seam ──
+          Starting at left CEJ junction point, going UP through crown,
+          across top cusps, down right side, then DOWN into right root,
+          around right tip, UP into notch, DOWN into left root,
+          around left tip, and back UP to start.
       */}
       <path
         d="M 26,148
@@ -149,10 +88,20 @@ function ToothIllustration() {
            C 114,36 126,18 142,12
            C 156,6 170,12 178,28
            C 186,44 190,68 190,94
-           C 190,118 184,138 176,148
-           C 158,152 136,155 118,155
-           C 100,155 78,152 60,150
-           C 46,148 36,148 26,148 Z"
+           C 190,118 184,138 178,150
+           C 180,176 178,206 172,234
+           C 168,256 158,274 148,282
+           C 140,288 130,288 124,282
+           C 118,276 114,260 112,242
+           C 110,230 108,220 106,214
+           C 105,212 105,212 105,212
+           C 105,212 105,212 104,214
+           C 102,220 100,230 98,242
+           C 96,260 92,276 86,282
+           C 80,288 70,288 62,282
+           C 52,274 42,256 38,234
+           C 32,206 30,176 32,150
+           C 26,148 26,148 26,148 Z"
         fill="url(#enamel)"
         strokeLinejoin="round"
       />
@@ -161,18 +110,45 @@ function ToothIllustration() {
       <path
         d="M 26,148 C 12,120 8,80 14,50 C 18,26 34,10 56,8
            C 62,8 66,10 70,14
-           C 56,28 44,52 38,80 C 32,106 30,132 32,148 Z"
+           C 56,28 44,52 38,80 C 32,106 30,132 32,150
+           C 30,180 34,210 42,238
+           C 50,260 58,272 64,278
+           C 60,272 52,256 48,234
+           C 42,206 40,180 42,154
+           C 40,150 36,148 26,148 Z"
         fill="url(#shadowL)"
+        opacity="0.85"
       />
 
-      {/* Right-edge roundness shadow */}
+      {/* Right-edge roundness shadow — extends from crown through right root */}
       <path
         d="M 142,12 C 158,8 172,14 180,30
-           C 188,46 190,70 190,94 C 190,118 184,138 176,148
-           C 170,152 162,154 154,155
-           C 166,148 174,132 176,112
-           C 178,90 174,64 166,44 C 158,24 150,14 142,12 Z"
+           C 188,46 190,70 190,94 C 190,118 184,138 178,150
+           C 180,180 178,210 172,234
+           C 168,256 158,274 148,282
+           C 144,284 142,282 142,280
+           C 154,272 164,254 168,232
+           C 174,204 172,178 168,154
+           C 170,150 174,150 178,150
+           C 178,150 178,150 178,150
+           C 184,140 190,118 190,94
+           C 190,70 188,46 180,30
+           C 172,14 158,8 142,12 Z"
         fill="url(#shadowR)"
+        opacity="0.85"
+      />
+
+      {/* Deep V notch shadow between root tips */}
+      <path
+        d="M 96,212
+           C 100,224 103,234 105,236
+           C 107,234 110,224 114,212
+           C 116,206 116,200 113,198
+           C 110,206 108,214 105,220
+           C 102,214 100,206 97,198
+           C 94,200 94,206 96,212 Z"
+        fill="url(#valleyG)"
+        opacity="0.7"
       />
 
       {/* Big central specular (the main gloss from the photo) */}
