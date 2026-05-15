@@ -71,36 +71,65 @@ function ToothIllustration() {
       {/* Ambient teal glow */}
       <ellipse cx="105" cy="150" rx="88" ry="100" fill="url(#glow)"/>
 
-      {/* ── ROOT BLOCK — two tapered roots, mirrors crown cusps shape ──
-          Wide at CEJ, tapers to two narrow rounded tips, deep U notch between.
-          Left tip centre ≈ x=62  Notch bottom ≈ y=206  Right tip centre ≈ x=148
+      {/* ── ROOT BLOCK — TWO tapered roots like crown cusps (mirrored) ──
+          Mirror of crown: wide at CEJ, tapers to 2 separate rounded tips.
+          Left tip ≈ (66, 286)   Notch bottom ≈ (105, 200)   Right tip ≈ (144, 286)
       */}
       <path
         d="M 30,148
-           C 16,166 10,194 14,222
-           C 18,250 34,272 54,282
-           C 62,286 72,284 80,276
-           C 88,268 93,252 94,228
-           C 95,216 99,206 105,202
-           C 111,206 115,216 116,228
-           C 117,252 122,268 130,276
-           C 138,284 148,286 156,282
-           C 176,272 192,250 196,222
-           C 200,194 194,166 180,148
+           C 16,170 8,206 12,236
+           C 18,262 36,280 58,286
+           C 70,290 80,288 86,280
+           C 92,272 95,256 96,236
+           C 96,224 99,212 102,204
+           C 103,202 104,200 105,200
+           C 106,200 107,202 108,204
+           C 111,212 114,224 114,236
+           C 115,256 118,272 124,280
+           C 130,288 140,290 152,286
+           C 174,280 192,262 198,236
+           C 202,206 194,170 180,148
            C 162,152 140,154 120,154
            C 100,154 80,152 60,150
            C 46,149 36,148 30,148 Z"
         fill="url(#rootG)"
       />
 
-      {/* Notch shadow — dark V groove between roots */}
+      {/* Right-side shadow on roots for 3D roundness */}
       <path
-        d="M 90,150
-           C 88,164 90,186 96,206
-           C 100,218 104,210 105,206
-           C 106,210 110,218 114,206
-           C 120,186 122,164 120,150
-           C 112,148 98,148 90,150 Z"
+        d="M 180,148
+           C 194,170 202,206 198,236
+           C 192,262 174,280 152,286
+           C 146,288 142,286 140,282
+           C 152,274 162,256 168,232
+           C 174,206 172,180 168,162
+           C 164,154 170,150 180,148 Z"
+        fill="url(#shadowR)"
+        opacity="0.5"
+      />
+
+      {/* Light highlight on left-front of left root */}
+      <path
+        d="M 30,148
+           C 16,170 8,206 12,236
+           C 18,256 30,272 48,282
+           C 50,278 50,272 48,260
+           C 40,234 36,202 36,176
+           C 38,160 40,152 50,150
+           C 40,148 32,148 30,148 Z"
+        fill="url(#shadowL)"
+        opacity="0.45"
+      />
+
+      {/* Deep V notch shadow between tips */}
+      <path
+        d="M 96,210
+           C 100,222 103,232 105,234
+           C 107,232 110,222 114,210
+           C 115,206 115,200 113,198
+           C 110,206 108,214 105,220
+           C 102,214 100,206 97,198
+           C 95,200 95,206 96,210 Z"
         fill="url(#valleyG)"
         opacity="0.7"
       />
