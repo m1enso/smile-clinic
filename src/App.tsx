@@ -71,40 +71,38 @@ function ToothIllustration() {
       {/* Ambient teal glow */}
       <ellipse cx="105" cy="150" rx="88" ry="100" fill="url(#glow)"/>
 
-      {/* ── ROOT BLOCK — W-shape: narrow at CEJ, flares wide, deep U notch ──
-          Outer flare wider than crown. Notch reaches up to y≈186.
-          Left tip ≈ (55,280)   Notch bottom ≈ (105,182)   Right tip ≈ (155,280)
+      {/* ── ROOT BLOCK — two tapered roots, mirrors crown cusps shape ──
+          Wide at CEJ, tapers to two narrow rounded tips, deep U notch between.
+          Left tip centre ≈ x=62  Notch bottom ≈ y=206  Right tip centre ≈ x=148
       */}
       <path
         d="M 30,148
-           C 12,162 2,190 4,222
-           C 6,250 22,272 48,282
-           C 58,287 72,286 82,276
-           C 92,266 96,246 96,222
-           C 96,210 98,198 102,190
-           C 103,186 104,184 105,183
-           C 106,184 107,186 108,190
-           C 112,198 114,210 114,222
-           C 114,246 118,266 128,276
-           C 138,286 152,287 162,282
-           C 188,272 204,250 206,222
-           C 208,190 198,162 180,148
+           C 16,166 10,194 14,222
+           C 18,250 34,272 54,282
+           C 62,286 72,284 80,276
+           C 88,268 93,252 94,228
+           C 95,216 99,206 105,202
+           C 111,206 115,216 116,228
+           C 117,252 122,268 130,276
+           C 138,284 148,286 156,282
+           C 176,272 192,250 196,222
+           C 200,194 194,166 180,148
            C 162,152 140,154 120,154
-           C 100,154 80,152 62,150
-           C 48,149 38,148 30,148 Z"
+           C 100,154 80,152 60,150
+           C 46,149 36,148 30,148 Z"
         fill="url(#rootG)"
       />
 
-      {/* Notch shadow — deep dark U between roots */}
+      {/* Notch shadow — dark V groove between roots */}
       <path
-        d="M 92,152
-           C 90,166 90,184 96,200
-           C 100,212 103,196 105,191
-           C 107,196 110,212 114,200
-           C 120,184 120,166 118,152
-           C 110,150 100,150 92,152 Z"
+        d="M 90,150
+           C 88,164 90,186 96,206
+           C 100,218 104,210 105,206
+           C 106,210 110,218 114,206
+           C 120,186 122,164 120,150
+           C 112,148 98,148 90,150 Z"
         fill="url(#valleyG)"
-        opacity="0.65"
+        opacity="0.7"
       />
 
       {/* ── CROWN ──
