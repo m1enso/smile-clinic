@@ -179,6 +179,7 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [contactServiceTitle, setContactServiceTitle] = useState("");
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -543,9 +544,13 @@ export default function App() {
               </div>
               <div>
                 <label className="block text-xs text-slate-400 uppercase tracking-wider mb-1.5">Usługa</label>
-                <select className="w-full bg-[#0d1f38] border border-white/15 focus:border-[#00D4C8]/60 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors">
+                <select
+                  value={contactServiceTitle}
+                  onChange={(e) => setContactServiceTitle(e.target.value)}
+                  className="w-full bg-[#0d1f38] border border-white/15 focus:border-[#00D4C8]/60 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors"
+                >
                   <option value="">Wybierz usługę...</option>
-                  {services.map((s) => <option key={s.title}>{s.title}</option>)}
+                  {services.map((s) => <option key={s.title} value={s.title}>{s.title}</option>)}
                 </select>
               </div>
               <div>
@@ -629,10 +634,14 @@ export default function App() {
 
               {/* CTA */}
               <button
-                onClick={() => { setSelectedService(null); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
+                onClick={() => {
+                  setContactServiceTitle(selectedService.title);
+                  setSelectedService(null);
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className="mt-6 w-full bg-[#00D4C8] hover:bg-[#00bfb4] text-[#0A1628] font-bold py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-[#00D4C8]/25 hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
-                Umów wizytę na tę usługę <ChevronRight className="w-5 h-5" />
+                Umów usługę <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>
