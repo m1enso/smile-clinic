@@ -61,7 +61,7 @@ function ToothIllustration() {
       <img
         src="/tooth.png"
         alt="Model zęba 3D"
-        className="relative z-10 w-4/5 h-4/5 object-contain"
+        className="relative z-10 w-full h-full object-contain"
         style={{ filter: "drop-shadow(0 8px 28px rgba(0,212,200,0.35))" }}
       />
     </div>
