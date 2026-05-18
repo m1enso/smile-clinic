@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Menu,
   X,
@@ -103,13 +103,63 @@ function StatCard({ value, label, suffix = "", started }: { value: number; label
   );
 }
 
-const services = [
-  { icon: Smile, title: "Stomatologia ogólna", desc: "Kompleksowa opieka nad zębami dla całej rodziny. Przeglądy, leczenie próchnicy i profilaktyka." },
-  { icon: AlignCenter, title: "Ortodoncja", desc: "Nowoczesne aparaty stałe i invisalign dla pięknego, prostego uśmiechu w każdym wieku." },
-  { icon: Shield, title: "Implantologia", desc: "Trwałe implanty zębowe wykonane z biokompatybilnego tytanu. Odbuduj uśmiech na lata." },
-  { icon: Sparkles, title: "Wybielanie zębów", desc: "Profesjonalne wybielanie gabinetowe i nakładkowe dla olśniewająco białego uśmiechu." },
-  { icon: Zap, title: "Protetyka", desc: "Korony, mosty, protezy i licówki porcelanowe dopasowane do Twoich indywidualnych potrzeb." },
-  { icon: Scissors, title: "Chirurgia stomatologiczna", desc: "Usuwanie zębów, leczenie torbieli i zabiegi periodontologiczne z minimalnym dyskomfortem." },
+type Service = {
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+  fullDesc: string;
+  dentist: { name: string; title: string; initials: string };
+};
+
+const services: Service[] = [
+  {
+    icon: Smile,
+    title: "Stomatologia ogólna",
+    desc: "Kompleksowa opieka nad zębami dla całej rodziny. Przeglądy, leczenie próchnicy i profilaktyka.",
+    fullDesc:
+      "Stomatologia ogólna to fundament zdrowego uśmiechu. Oferujemy pełen zakres leczenia – od rutynowych przeglądów i profesjonalnego czyszczenia kamienia, przez leczenie próchnicy z użyciem materiałów kompozytowych dopasowanych kolorystycznie do zęba, aż po endodoncję (leczenie kanałowe). Każdą wizytę poprzedza cyfrowe zdjęcie RTG, pozwalające na wczesne wykrycie problemów niewidocznych gołym okiem. Stosujemy nowoczesne znieczulenia komfortu, dzięki którym zabieg jest całkowicie bezbolesny nawet dla najbardziej obawiających się pacjentów.",
+    dentist: { name: "dr Anna Kowalska", title: "Stomatolog ogólny, specjalista II stopnia", initials: "AK" },
+  },
+  {
+    icon: AlignCenter,
+    title: "Ortodoncja",
+    desc: "Nowoczesne aparaty stałe i invisalign dla pięknego, prostego uśmiechu w każdym wieku.",
+    fullDesc:
+      "Ortodoncja w Smile Clinic to znacznie więcej niż prostowanie zębów – to kompleksowa korekta zgryzu i estetyki twarzy. Oferujemy aparaty stałe metalowe i ceramiczne (niemal niewidoczne), a także systemy nakładkowe Invisalign i ClearCorrect dedykowane dorosłym, którzy cenią dyskrecję. Przed założeniem aparatu wykonujemy cyfrowy skan jamy ustnej i tworzymy wirtualną symulację efektu końcowego, abyś dokładnie wiedział/a, jak będzie wyglądał Twój uśmiech po leczeniu. Czas leczenia, plan wizyt i koszty dopasowujemy indywidualnie.",
+    dentist: { name: "dr Marek Wiśniewski", title: "Specjalista ortodonta, członek PTO", initials: "MW" },
+  },
+  {
+    icon: Shield,
+    title: "Implantologia",
+    desc: "Trwałe implanty zębowe wykonane z biokompatybilnego tytanu. Odbuduj uśmiech na lata.",
+    fullDesc:
+      "Implanty zębowe to najtrwalsze i najbardziej komfortowe rozwiązanie przy braku zębów. Wszczepiamy implanty z biokompatybilnego tytanu klasy medycznej – wyglądają, czują się i funkcjonują jak naturalne zęby. Procedura odbywa się w znieczuleniu miejscowym i jest niemal bezbolesna. W Smile Clinic oferujemy implanty natychmiastowe (jeden dzień), protokół All-on-4 przy bezzębiu, a także augmentację kości dla pacjentów z niedoborem tkanki kostnej. Na każdy implant udzielamy 10-letniej gwarancji.",
+    dentist: { name: "dr Katarzyna Nowak", title: "Implantolog, specjalista chirurgii stomatologicznej", initials: "KN" },
+  },
+  {
+    icon: Sparkles,
+    title: "Wybielanie zębów",
+    desc: "Profesjonalne wybielanie gabinetowe i nakładkowe dla olśniewająco białego uśmiechu.",
+    fullDesc:
+      "Profesjonalne wybielanie zębów może rozjaśnić kolor nawet o 8–12 odcieni w trakcie jednej wizyty. Oferujemy dwie metody: wybielanie gabinetowe z lampą LED (efekt widoczny natychmiast po zabiegu) oraz wybielanie nakładkowe do stosowania w domu pod naszym nadzorem – idealne dla osób z nadwrażliwością. Przed zabiegiem wykonujemy ocenę stanu szkliwa i dobieramy odpowiednie stężenie preparatu, aby efekt był piękny i bezpieczny. W cenie wliczone jest badanie stomatologiczne i dobór docelowego odcienia na próbniku.",
+    dentist: { name: "dr Anna Kowalska", title: "Stomatolog estetyczny, certyfikat Philips Zoom", initials: "AK" },
+  },
+  {
+    icon: Zap,
+    title: "Protetyka",
+    desc: "Korony, mosty, protezy i licówki porcelanowe dopasowane do Twoich indywidualnych potrzeb.",
+    fullDesc:
+      "Protetyka stomatologiczna łączy funkcjonalność z estetyką. Wykonujemy korony i mosty pełnoceramiczne (bez metalowego podbudowania), licówki porcelanowe zmieniające kształt i kolor zębów, a także nowoczesne protezy szkieletowe i bezklamrowe. Każda praca protetyczna powstaje we współpracy z renomowanym laboratorium techniki dentystycznej i jest dopasowywana kolorystycznie do pozostałych zębów przy użyciu spektrofotometru. Oferujemy też pełne projekty uśmiechu (Smile Design) z cyfrową wizualizacją efektu przed rozpoczęciem leczenia.",
+    dentist: { name: "dr Joanna Bąk", title: "Specjalista protetyki stomatologicznej", initials: "JB" },
+  },
+  {
+    icon: Scissors,
+    title: "Chirurgia stomatologiczna",
+    desc: "Usuwanie zębów, leczenie torbieli i zabiegi periodontologiczne z minimalnym dyskomfortem.",
+    fullDesc:
+      "Nasz oddział chirurgii stomatologicznej wykonuje zabiegi od prostych ekstrakcji po zaawansowane procedury takie jak: usuwanie zębów mądrości (ósemek), operacyjne leczenie torbieli i ziarniniaków, plastyka dziąseł, zabiegi periodontologiczne (kiretaż, płat Widmana) oraz regeneracja kości z użyciem błon i materiałów kościozastępczych. Wszystkie zabiegi przeprowadzane są w warunkach aseptycznych, a do znieczuleń stosujemy technologię STA (computer-controlled anesthesia) eliminującą dyskomfort związany z iniekcją.",
+    dentist: { name: "dr Katarzyna Nowak", title: "Specjalista chirurgii stomatologicznej, implantolog", initials: "KN" },
+  },
 ];
 
 const team = [
@@ -128,6 +178,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -354,7 +405,11 @@ export default function App() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div key={i} className="group relative bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#00D4C8]/40 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#00D4C8]/10 cursor-pointer overflow-hidden">
+              <button
+                key={i}
+                onClick={() => setSelectedService(s)}
+                className="group relative bg-white/5 hover:bg-white/8 border border-white/10 hover:border-[#00D4C8]/40 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#00D4C8]/10 cursor-pointer overflow-hidden text-left w-full"
+              >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#00D4C8]/5 rounded-full blur-2xl group-hover:bg-[#00D4C8]/10 transition-colors" />
                 <div className="relative">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#00D4C8]/20 to-[#0A84D4]/20 border border-[#00D4C8]/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
@@ -366,7 +421,7 @@ export default function App() {
                     Dowiedz się więcej <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -505,6 +560,84 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* SERVICE MODAL */}
+      {selectedService && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+          onClick={() => setSelectedService(null)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+          {/* Panel */}
+          <div
+            className="relative z-10 w-full max-w-2xl bg-[#0d1f38] border border-white/10 rounded-3xl shadow-2xl shadow-black/60 overflow-hidden max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header stripe */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00D4C8] to-[#0A84D4]" />
+
+            {/* Close */}
+            <button
+              onClick={() => setSelectedService(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center transition-colors"
+            >
+              <X className="w-5 h-5 text-slate-400" />
+            </button>
+
+            <div className="p-8 pt-10">
+              {/* Service icon + title */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00D4C8]/20 to-[#0A84D4]/20 border border-[#00D4C8]/25 flex items-center justify-center flex-shrink-0">
+                  <selectedService.icon className="w-7 h-7 text-[#00D4C8]" />
+                </div>
+                <div>
+                  <p className="text-[#00D4C8] text-xs font-semibold uppercase tracking-widest mb-1">Usługa</p>
+                  <h2 className="text-2xl font-black leading-tight">{selectedService.title}</h2>
+                </div>
+              </div>
+
+              {/* Full description */}
+              <p className="text-slate-300 leading-relaxed text-sm mb-8">
+                {selectedService.fullDesc}
+              </p>
+
+              {/* Dentist card */}
+              <div className="border-t border-white/10 pt-7">
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-4 font-semibold">Prowadzący specjalista</p>
+                <div className="flex items-center gap-5 bg-white/5 border border-white/10 rounded-2xl p-5">
+                  {/* Photo placeholder */}
+                  <div className="relative flex-shrink-0">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#00D4C8] to-[#0A84D4] blur-md opacity-40" />
+                    <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-[#00D4C8]/25 to-[#0A84D4]/25 border-2 border-[#00D4C8]/40 flex flex-col items-center justify-center gap-1">
+                      <span className="text-xl font-black text-[#00D4C8]">{selectedService.dentist.initials}</span>
+                      <span className="text-[9px] text-slate-500 uppercase tracking-wider">zdjęcie</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="font-bold text-base">{selectedService.dentist.name}</p>
+                    <p className="text-[#00D4C8] text-sm font-medium mt-0.5">{selectedService.dentist.title}</p>
+                    <div className="flex gap-0.5 mt-2">
+                      {[...Array(5)].map((_, j) => (
+                        <Star key={j} className="w-3.5 h-3.5 fill-[#00D4C8] text-[#00D4C8]" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <button
+                onClick={() => { setSelectedService(null); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
+                className="mt-6 w-full bg-[#00D4C8] hover:bg-[#00bfb4] text-[#0A1628] font-bold py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-[#00D4C8]/25 hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              >
+                Umów wizytę na tę usługę <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* FOOTER */}
       <footer className="border-t border-white/10 py-12 px-6">
